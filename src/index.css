@@ -8,35 +8,65 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Space/Science Theme */
+    --background: 230 35% 7%;
+    --foreground: 210 20% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 230 25% 12%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 230 25% 12%;
+    --popover-foreground: 210 20% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Scientific Elements */
+    --primary: 200 100% 60%;
+    --primary-foreground: 230 35% 7%;
+    --primary-glow: 200 100% 75%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 280 50% 50%;
+    --secondary-foreground: 210 20% 98%;
+    --secondary-glow: 280 60% 70%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 120 100% 50%;
+    --accent-foreground: 230 35% 7%;
+    --accent-glow: 120 100% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Particles */
+    --proton: 15 100% 60%;
+    --proton-glow: 15 100% 75%;
+    --neutron: 0 0% 60%;
+    --neutron-glow: 0 0% 75%;
+    --electron: 200 100% 60%;
+    --electron-glow: 200 100% 80%;
 
-    --destructive: 0 84.2% 60.2%;
+    --muted: 230 15% 20%;
+    --muted-foreground: 215 15% 70%;
+
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 230 15% 25%;
+    --input: 230 15% 20%;
+    --ring: 200 100% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(230 35% 7%), hsl(260 40% 15%));
+    --gradient-orbital: radial-gradient(circle, hsl(var(--electron) / 0.2), transparent 70%);
+    --gradient-nucleus: radial-gradient(circle, hsl(var(--proton) / 0.3), hsl(var(--neutron) / 0.2));
+    
+    /* Glows */
+    --glow-primary: 0 0 20px hsl(var(--primary) / 0.5);
+    --glow-electron: 0 0 15px hsl(var(--electron) / 0.6);
+    --glow-proton: 0 0 12px hsl(var(--proton) / 0.6);
+    --glow-neutron: 0 0 10px hsl(var(--neutron) / 0.4);
+
+    /* Animations */
+    --spin-slow: 8s linear infinite;
+    --spin-medium: 4s linear infinite;
+    --spin-fast: 2s linear infinite;
+    --pulse-glow: pulse-glow 2s ease-in-out infinite alternate;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +131,88 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-cosmic);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Particle Effects */
+  .particle-proton {
+    @apply bg-gradient-to-br from-orange-400 to-red-500 rounded-full;
+    box-shadow: var(--glow-proton);
+  }
+  
+  .particle-neutron {
+    @apply bg-gradient-to-br from-gray-400 to-gray-600 rounded-full;
+    box-shadow: var(--glow-neutron);
+  }
+  
+  .particle-electron {
+    @apply bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full;
+    box-shadow: var(--glow-electron);
+  }
+
+  /* Orbital Animations */
+  .orbital-ring {
+    @apply border-2 border-primary/30 rounded-full absolute;
+    animation: spin var(--spin-slow);
+  }
+
+  .orbital-ring-fast {
+    @apply border-2 border-accent/40 rounded-full absolute;
+    animation: spin var(--spin-medium);
+  }
+
+  /* Glow Effects */
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .atom-container {
+    @apply relative flex items-center justify-center;
+    background: var(--gradient-orbital);
+  }
+
+  /* Interactive Elements */
+  .element-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 rounded-lg p-4 transition-all duration-300;
+  }
+
+  .element-card:hover {
+    @apply border-primary/50 transform scale-105;
+    box-shadow: var(--glow-primary);
+  }
+
+  /* Pulse Animation */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 5px hsl(var(--primary) / 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.8), 0 0 30px hsl(var(--primary) / 0.4);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
