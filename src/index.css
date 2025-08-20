@@ -191,12 +191,20 @@ All colors MUST be HSL.
 }
 
 @keyframes pulse-glow {
-  0% {
-    box-shadow: 0 0 5px hsl(var(--primary) / 0.3);
+  0%, 100% {
+    box-shadow: 0 0 5px hsl(var(--accent));
+    transform: scale(1);
   }
-  100% {
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.8), 0 0 30px hsl(var(--primary) / 0.4);
+  50% {
+    box-shadow: 0 0 20px hsl(var(--accent)), 0 0 30px hsl(var(--accent));
+    transform: scale(1.05);
   }
+}
+
+@keyframes element-hover {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(2deg); }
+  100% { transform: scale(1.05) rotate(0deg); }
 }
 
 @keyframes spin {
