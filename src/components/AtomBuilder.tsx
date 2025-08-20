@@ -14,9 +14,6 @@ export interface AtomData {
   electrons: number;
   element?: string;
   symbol?: string;
-  period?: number;
-  group?: number;
-  type?: string;
 }
 
 export const AtomBuilder = () => {
