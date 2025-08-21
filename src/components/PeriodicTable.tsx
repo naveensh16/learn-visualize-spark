@@ -19,6 +19,24 @@ const elements: AtomData[] = [
   { protons: 10, neutrons: 10, electrons: 10, element: "Neon", symbol: "Ne" },
   { protons: 11, neutrons: 12, electrons: 11, element: "Sodium", symbol: "Na" },
   { protons: 12, neutrons: 12, electrons: 12, element: "Magnesium", symbol: "Mg" },
+  { protons: 13, neutrons: 14, electrons: 13, element: "Aluminum", symbol: "Al" },
+  { protons: 14, neutrons: 14, electrons: 14, element: "Silicon", symbol: "Si" },
+  { protons: 15, neutrons: 16, electrons: 15, element: "Phosphorus", symbol: "P" },
+  { protons: 16, neutrons: 16, electrons: 16, element: "Sulfur", symbol: "S" },
+  { protons: 17, neutrons: 18, electrons: 17, element: "Chlorine", symbol: "Cl" },
+  { protons: 18, neutrons: 22, electrons: 18, element: "Argon", symbol: "Ar" },
+  { protons: 19, neutrons: 20, electrons: 19, element: "Potassium", symbol: "K" },
+  { protons: 20, neutrons: 20, electrons: 20, element: "Calcium", symbol: "Ca" },
+  { protons: 21, neutrons: 24, electrons: 21, element: "Scandium", symbol: "Sc" },
+  { protons: 22, neutrons: 26, electrons: 22, element: "Titanium", symbol: "Ti" },
+  { protons: 23, neutrons: 28, electrons: 23, element: "Vanadium", symbol: "V" },
+  { protons: 24, neutrons: 28, electrons: 24, element: "Chromium", symbol: "Cr" },
+  { protons: 25, neutrons: 30, electrons: 25, element: "Manganese", symbol: "Mn" },
+  { protons: 26, neutrons: 30, electrons: 26, element: "Iron", symbol: "Fe" },
+  { protons: 27, neutrons: 32, electrons: 27, element: "Cobalt", symbol: "Co" },
+  { protons: 28, neutrons: 31, electrons: 28, element: "Nickel", symbol: "Ni" },
+  { protons: 29, neutrons: 35, electrons: 29, element: "Copper", symbol: "Cu" },
+  { protons: 30, neutrons: 35, electrons: 30, element: "Zinc", symbol: "Zn" },
 ];
 
 export const PeriodicTable = ({ onElementSelect }: PeriodicTableProps) => {
@@ -34,7 +52,7 @@ export const PeriodicTable = ({ onElementSelect }: PeriodicTableProps) => {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-6 gap-2 max-h-80 overflow-y-auto">
           {elements.map((element) => (
             <Button
               key={element.symbol}
@@ -49,7 +67,7 @@ export const PeriodicTable = ({ onElementSelect }: PeriodicTableProps) => {
         </div>
         
         <div className="mt-4 text-xs text-muted-foreground text-center">
-          <p>🧪 Elements 1-12 available for exploration</p>
+          <p>🧪 Elements 1-30 available for exploration</p>
         </div>
       </CardContent>
     </Card>

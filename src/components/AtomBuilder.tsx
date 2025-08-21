@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { AtomVisualizer } from "./AtomVisualizer";
 import { PeriodicTable } from "./PeriodicTable";
+import { EducationalContent } from "./EducationalContent";
 import { Particle } from "./Particle";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
@@ -82,7 +83,7 @@ export const AtomBuilder = () => {
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-3 gap-6">
         {/* Atom Visualizer */}
         <Card className="element-card">
           <CardHeader>
@@ -244,6 +245,11 @@ export const AtomBuilder = () => {
           </Card>
 
           <PeriodicTable onElementSelect={loadElement} />
+        </div>
+
+        {/* Educational Content */}
+        <div className="space-y-6">
+          <EducationalContent atom={atom} />
         </div>
       </div>
     </div>
